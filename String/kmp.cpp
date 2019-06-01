@@ -1,3 +1,11 @@
+// implementation of KMP algorithm
+
+// references : www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
+
+// implementation of KMP algorithm
+
+// references : www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
+
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
@@ -36,13 +44,34 @@ void printlps(vi lps)
     cout << "\n";
 }
 
-void printresult(vi lps,int s)
+void printresult(string s, vi &lps, string t)
 {
-    for(int i =0; i< lps.size(); i++)
+    int m = s.size();
+    int n = t.size();
+    
+    //cout << "\n" << m << " " << n << "\n";
+    int j =0;
+    for(int i =0; i< m; )
     {
-        if(lps[i] == s)
+        if(s[i] == t[j])
         {
-            cout << "found at :" << i - 2*s  << "\n";
+            i++;
+            j++;
+        }
+        
+        if(j == n)
+        {
+            cout << "fount at " << i-j << "\n";
+            j = lps[j-1];
+        }
+        else if(i < m && s[i] != t[j])
+        {
+            if(j != 0)
+            {
+                j = lps[j-1];
+            }
+            else
+                i = i+1;
         }
     }
 }
@@ -52,14 +81,11 @@ int main() {
     string s = "adityakumkumarisgood";
     string t = "kumar";
     
-    string temp_str = t + "#" + s;
-    
-    cout << temp_str << "\n";
     vi lps_vec;
-    calculatelps(temp_str,lps_vec);
+    calculatelps(t,lps_vec);
     
     printlps(lps_vec);
     
-    printresult(lps_vec,t.size());
+    printresult(s,lps_vec,t);
     return 0;
 }
