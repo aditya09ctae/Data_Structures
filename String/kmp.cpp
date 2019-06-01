@@ -2,10 +2,6 @@
 
 // references : www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
 
-// implementation of KMP algorithm
-
-// references : www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
-
 #include <bits/stdc++.h>
 using namespace std;
 typedef vector<int> vi;
