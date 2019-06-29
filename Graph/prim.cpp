@@ -48,6 +48,7 @@ int main()
         int a,b,w;
         cin >> a >> b >> w;
         g[a-1].push_back({w,b-1});
+        g[b-1].push_back({w,a-1});
     }
     
     cout << prim(g,0);
