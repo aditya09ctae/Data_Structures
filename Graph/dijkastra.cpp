@@ -2,6 +2,40 @@
 
 using namespace std;
 
+/*
+     void dijkastra( vector<vector<pair<int,int>>> &g, vector<int> &res, int src)
+     {
+     priority_queue<pair<int,int>,vector<pair<int,int>>, greater<pair<int,int>>> pq;
+     vector<int> visited(g.size(),0);
+     pq.push({0,src});
+     res[src] = 0;
+ 
+     while(pq.empty() == false)
+     {
+     int node = pq.top().second;
+     int wt= pq.top().first;
+     //cout << node << "\n";
+     pq.pop();
+ 
+     if(visited[node] == 1)
+     continue;
+ 
+     visited[node] = 1;
+ 
+     for(pair<int,int> e : g[node])
+     {
+     int temp_node = e.second;
+     int temp_wt = e.first + wt;
+ 
+     if(visited[temp_node] == 0 && res[temp_node] > temp_wt)
+     {
+     pq.push({temp_wt,temp_node});
+     res[temp_node] = temp_wt;
+     }
+     }
+     }
+     }
+ */
 void dijkastra(vector<vector<pair<int,int>>> &g, vector<int> &res, int s)
 {
     priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
